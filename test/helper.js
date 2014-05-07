@@ -3,7 +3,7 @@
  *                     by async.times().
  */
 exports.connectToDB = function(number, callback) {
-  var pg = require('pg');
+  var pg = require('pg.js');
 
   var db = new pg.Client(process.env.DATABASE_URL);
   db.connect(function(err) {

@@ -3,9 +3,11 @@ node-pg-jobs
 
 A simple yet flexible postgres backed job queue for node.js.
 
-# Create a job
+## Create a job
+
 Creating a job is simple a matter of calling `jobs.create()` with a freeform object representing
 the job to be created, and specifying when we should consider the job for service.
+
 ```javascript
 /**
  * @param {Object} job The data you want to save for the job.  This is freeform
@@ -25,13 +27,16 @@ jobs.create({
 }, 2000, done);
 ```
 
-# Process jobs
-## Providing continual service
+## Process jobs
+
+### Providing continual service
+
 The callback function passed to `jobs.process()` is the brains here.
 It defines what will happen when a job receives service.  It is
 passed the job and a done callback that it should call to notify
 what should happen to the job after processing.  The id is the id
 that was automatically created when the job was created.
+
 ```javascript
 var callback = function(id, job, done) {
  // Do stuff with job
@@ -88,7 +93,7 @@ var callback = function(err, jobData, done) {
 jobs.processNow(id, callback, done);
 ```
 
-# Running migrations on heroku
+## Running migrations on heroku
 This is a bit yuk, but it should work:
 ```
 heroku run bash
